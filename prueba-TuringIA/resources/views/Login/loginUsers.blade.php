@@ -58,7 +58,7 @@
                         <label for="remember" class="form-check-label" style="padding-top: 3px;">Recuérdame</label>
                     </div>
                     <div class="row text-center mt-2">
-                        <a href="">¿No tienes una cuenta?, regístrate aquí</a>
+                        <a href="{{ route('v_sign-up')}}">¿No tienes una cuenta?, regístrate aquí</a>
                     </div>
                 </form>
             </div>
