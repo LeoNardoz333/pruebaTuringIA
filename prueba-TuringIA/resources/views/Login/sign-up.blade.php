@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="row mt-2 mb-2">
-                    <form action="" method="POST">
+                    <form action="{{route('user.store')}}" method="POST">
                     @csrf
                         <div class="col-12">
                             <label class="login">Nombre:</label>
@@ -67,7 +67,7 @@
                 </div>
                 @error('password_confirmation') <p class="text text-danger">{{ $message }}</p>
                 @enderror
-                <input type="text" name="permisos" value="usuario" hidden>
+                <input type="text" name="permisos" value="user" hidden>
                 <div class="row mt-4 d-flex justify-content-between align-items-center flex-column flex-md-row">
                     <div class="col-12 col-md-auto mb-2 mb-md-0 text-center">
                         <a href=" {{ /*url()->previous() */ route ('home') }}  " class="regresar w-100 w-md-auto">Regresar</a>

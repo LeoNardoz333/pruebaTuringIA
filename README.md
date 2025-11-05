@@ -12,6 +12,8 @@ Ejecutar en una terminal dentro de la misma carpeta los comandos:
 php artisan serve
 npm run dev
 
-Para poder inicar el proyecto, acceder al vínculo: http://127.0.0.1:8000/ desde un navegador.
+Para poder iniciar el proyecto, acceder al vínculo: http://127.0.0.1:8000/ desde un navegador.
 
-
+El usuario admin por defecto tiene los siguientes parámetros:
+Email: admin@turingIA.com
+Contraseña: turingIA123

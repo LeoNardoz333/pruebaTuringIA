@@ -21,7 +21,7 @@
                 id="alertSuccess">{{ session('success') }}</div>
             @endif
             <div class="mb-2">
-                <form action="" method="post">
+                <form action="{{route('login.validate')}}" method="post">
                     @csrf
                     <div class="w-100 d-flex justify-content-center">
                         <img class="m-auto" style="width: 45%;" src="{{ asset('icons/cuenta.png') }}" alt="">
@@ -30,12 +30,12 @@
                         <label class="titulos-negritas">Iniciar sesión</label>
                     </div>
                     <div class="mt-2">
-                        <label class="login">Usuario:</label>
+                        <label class="login">Correo electrónico:</label>
                     </div>
                     <div>
-                        <input type="text" class="form-control" name="usuario">
+                        <input type="text" class="form-control" name="email">
                     </div>
-                    @error('usuario') <p class="text text-danger text-center">{{ $message }}</p>
+                    @error('email') <p class="text text-danger text-center">{{ $message }}</p>
                     @enderror
                     <div class="mt-2">
                         <label class="login">Contraseña:</label>
