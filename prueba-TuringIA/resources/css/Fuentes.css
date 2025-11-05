@@ -1,0 +1,18 @@
+.login{
+    font-size: medium;
+}
+
+.titulos-negritas{
+    font-size: larger;
+    font-weight: bold;
+}
+
+.regresar{
+    color: rgb(185, 5, 5) !important;
+    text-decoration: none;
+}
+
+.regresar:hover{
+    color: red !important;
+    text-decoration: none;
+}
