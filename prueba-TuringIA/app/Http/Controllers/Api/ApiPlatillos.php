@@ -73,8 +73,9 @@ class ApiPlatillos
             }
 
             $platillo->foto = $request->file('foto')->store('platillos', 'public');
+        }else {
+            $validated['foto'] = $platillo->foto;
         }
-
         $platillo->update([
             'nombre' => $request->nombre,
             'categorias_id' => $request->categorias_id,
@@ -82,6 +83,7 @@ class ApiPlatillos
             'precio' => $request->precio,
             'foto' => $platillo->foto,
         ]);
+        
 
         return redirect()->back()->with('success', 'Platillo actualizado correctamente.');
     }

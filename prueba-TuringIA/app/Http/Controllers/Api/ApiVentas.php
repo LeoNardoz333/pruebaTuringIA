@@ -54,7 +54,7 @@ class ApiVentas
         $venta->update([
             'platillos_id' => $request->platillos_id,
             'cantidad' => $request->cantidad,
-            'fecha_venta' => $request->fecha_venta ?? $venta->fecha_venta,
+            'fecha_venta' => $request->fecha_venta,
         ]);
 
         return redirect()->back()->with('success', 'Venta actualizada correctamente.');

@@ -11,6 +11,7 @@ Route::get('/', function () { return view('/Login/loginUsers'); })->name('home')
 Route::get('/Login/loginAdmins', function () { return view('/Login/loginAdmins'); })->name('v_loginAdmins');
 
 Route::post('/Login/loginUsers', [Usuarios::class, 'validarLogin'])->name('login.validate');
+Route::post('/Login', [Usuarios::class, 'logout'])->name('login.logout');
 
 #sign up
 Route::get('/Login/sign-up', function () { return view('/Login/sign-up'); })->name('v_sign-up');
@@ -25,10 +26,6 @@ Route::get('/CRUDS/agregarCategoria', function () { return view('/CRUDS/agregarC
 ->name('categoria.index');
 Route::post('/CRUDS/agregarCategoria', [App\Http\Controllers\Api\ApiCategorias::class, 'store'])
 ->name('categoria.store');
-Route::get('/CRUDS/agregarCategoria/{id}', [App\Http\Controllers\Api\ApiCategorias::class, 'show'])
-->name('categoria.edit');
-Route::patch('/CRUDS/agregarCategoria/{id}', [App\Http\Controllers\Api\ApiCategorias::class, 'update'])
-->name('categoria.update');
 Route::delete('/CRUDS/agregarCategoria/{id}', [App\Http\Controllers\Api\ApiCategorias::class, 'destroy'])
 ->name('categoria.destroy');
 
@@ -59,8 +56,8 @@ Route::delete('/CRUDS/agregarVenta/{id}', [App\Http\Controllers\Api\ApiVentas::c
 #CRUD Usuarios
 Route::get('/CRUDS/agregarUsuario', function () { return view('/CRUDS/agregarUsuario'); })
 ->name('usuario.index');
-Route::post('/CRUDS/agregarUsuario', [Usuarios::class, 'store'])
-    ->name('usuario.store');
+Route::post('/CRUDS/agregarUsuario', [Usuarios::class, 'storeAdmin'])
+    ->name('usuario.storeAdmin');
 Route::get('/CRUDS/agregarUsuario/{id}', [Usuarios::class, 'show'])
     ->name('usuario.edit');
 Route::patch('/CRUDS/agregarUsuario/{id}', [Usuarios::class, 'update'])

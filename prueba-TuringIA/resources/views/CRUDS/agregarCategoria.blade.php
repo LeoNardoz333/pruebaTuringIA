@@ -10,30 +10,27 @@
     @include('layouts.nav_menu-admins')
     <div class="container mt-4">
             <div class="row mx-0">
-                <div class="col-lg-6 mt-4">
+                <div class="col-lg-5 mt-4">
                     <div class="border p-4">
                         <h1 class="my-4">Agregar Categoría</h1>
-                        <form action="" method="post">
+                        <form action="{{route('categoria.store')}}" method="post">
                             @csrf
 
                             @if (session('success'))
                             <div class="alert alert-success">{{ session('success') }}</div>
                             @endif
-
-                            @error('nombre')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-
                             <div class="form-group">
                                 <label for="nombre">Nombre de la Categoría</label><br>
                                 <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            @error('nombre') <p class="text text-danger text-center">{{ $message }}</p>
+                            @enderror
                             </div><br>
                             <button type="submit" class="btn btn-primary">Añadir</button>
                         </form>
                     </div>
                 </div>
 
-                <div class="col-lg-6 mt-4">
+                <div class="col-lg-7 mt-4">
                     <div class="border p-4">
                         <h1 class="my-4">Categorías Registradas</h1>
                         <div class="table-responsive">
@@ -69,7 +66,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                    <form method="post" action="{{ route('categorias.destroy', ['categoria' => $categoria->id]) }}">
+                                                    <form method="post" action="{{ route('categoria.destroy', ['id' => $categoria->id]) }}">
                                                         @method('delete')
                                                         @csrf
                                                         <button type="submit" class="btn btn-primary">Eliminar</button>
@@ -86,5 +83,6 @@
                 </div>
             </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

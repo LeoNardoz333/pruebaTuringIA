@@ -10,7 +10,9 @@ insert into users (nombre, email, password, permisos, created_at, updated_at) va
 
 CREATE VIEW v_ventas AS
 SELECT 
-   p.nombre AS producto,
+   v.id,
+   v.platillos_id,
+   p.nombre AS platillo,
    v.cantidad,
    v.fecha_venta,
    (v.cantidad * p.precio) AS total

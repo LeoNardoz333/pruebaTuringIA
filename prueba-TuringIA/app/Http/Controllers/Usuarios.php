@@ -33,25 +33,44 @@ class Usuarios
         return redirect()->route('home')->with('success', 'Usuario creado exitosamente');
     }
 
-    public function update(Request $request, string $id)
+    public function storeAdmin(Request $request)
     {
-        $user = User::find($id);
-        if(!$user)
-            return response()->json(['message' => 'El usuario no existe'],404);
-
-       $validated = $request->validate([
+        $validated = $request->validate([
             'nombre' => 'required|string|max:30|min:2|regex:/^[A-Za-z+ÁÉÍÓÚáéíóúÑñ\s]+$/u',
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|min:6|max:20',
             'permisos' => 'required|string',
-            'confirm-password' => 'required|string|min:6|max:20',
         ]);
 
-        if(isset($validated['contrasena']))
-            $validated['contrasena'] = bcrypt($validated['contrasena']);
+        $validated['password'] = bcrypt($validated['password']);
+        User::create($validated);
+
+        return redirect()->route('usuario.index')->with('success', 'Usuario creado exitosamente');
+    }
+
+    public function update(Request $request, string $id)
+    {
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->back()->with('error', 'El usuario no existe.');
+        }
+
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:30|min:2|regex:/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/u',
+            'email' => 'required|email|max:255|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:6|max:20',
+            'permisos' => 'required|string|in:user,admin',
+        ]);
+
+        if (!empty($validated['password'])) {
+            $validated['password'] = bcrypt($validated['password']);
+        } else {
+            unset($validated['password']);
+        }
 
         $user->update($validated);
-        return response()->json($user);
+
+        return redirect()->route('usuario.index')->with('success', 'Usuario actualizado exitosamente.');
     }
 
     public function destroy(string $id)
@@ -61,7 +80,7 @@ class Usuarios
             return response()->json(['message'=>'El usuario no existe'], 404);
 
         $user->delete();
-        return response()->json(['message' => 'Usuario eliminado correctamente']);
+        return redirect()->route('usuario.index')->with('success', 'Usuario eliminado exitosamente');
     }
 
     public function validarLogin(Request $request)
