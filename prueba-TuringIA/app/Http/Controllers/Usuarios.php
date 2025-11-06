@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\RateLimiter;
 
-class Usuarios extends Controller
+class Usuarios
 {
     public function show(string $id)
     {
