@@ -21,7 +21,7 @@ Route::get('/Menus/menu-admins', function () { return view('/Menus/menu-admins')
 Route::get('/Menus/menu-usuarios', function () { return view('/Menus/menu-usuarios'); })->name('v_menu-usuarios');
 
 #CRUD Categorias
-Route::get('/CRUDS/agregarCategoria', [App\Http\Controllers\Api\ApiCategorias::class, 'index'])
+Route::get('/CRUDS/agregarCategoria', function () { return view('/CRUDS/agregarCategoria'); })
 ->name('categoria.index');
 Route::post('/CRUDS/agregarCategoria', [App\Http\Controllers\Api\ApiCategorias::class, 'store'])
 ->name('categoria.store');
@@ -33,8 +33,8 @@ Route::patch('/CRUDS/agregarCategoria/{id}', [App\Http\Controllers\Api\ApiCatego
 ->name('categoria.destroy');
 
 #CRUD Platillos
-Route::get('/CRUDS/agregarPlatillo', [App\Http\Controllers\Api\ApiPlatillos::class, 'index'])
-    ->name('platillo.index');
+Route::get('/CRUDS/agregarPlatillo', function () { return view('/CRUDS/agregarPlatillo'); })
+->name('platillo.index');
 Route::post('/CRUDS/agregarPlatillo', [App\Http\Controllers\Api\ApiPlatillos::class, 'store'])
     ->name('platillo.store');
 Route::get('/CRUDS/agregarPlatillo/{id}', [App\Http\Controllers\Api\ApiPlatillos::class, 'show'])
@@ -45,8 +45,8 @@ Route::delete('/CRUDS/agregarPlatillo/{id}', [App\Http\Controllers\Api\ApiPlatil
     ->name('platillo.destroy');
 
 #CRUD Ventas
-Route::get('/CRUDS/agregarVenta', [App\Http\Controllers\Api\ApiVentas::class, 'index'])
-    ->name('venta.index');
+Route::get('/CRUDS/agregarVenta', function () { return view('/CRUDS/agregarVenta'); })
+->name('venta.index');
 Route::post('/CRUDS/agregarVenta', [App\Http\Controllers\Api\ApiVentas::class, 'store'])
     ->name('venta.store');
 Route::get('/CRUDS/agregarVenta/{id}', [App\Http\Controllers\Api\ApiVentas::class, 'show'])
@@ -57,8 +57,8 @@ Route::delete('/CRUDS/agregarVenta/{id}', [App\Http\Controllers\Api\ApiVentas::c
     ->name('venta.destroy');
 
 #CRUD Usuarios
-Route::get('/CRUDS/agregarUsuario', [Usuarios::class, 'index'])
-    ->name('usuario.index');
+Route::get('/CRUDS/agregarUsuario', function () { return view('/CRUDS/agregarUsuario'); })
+->name('usuario.index');
 Route::post('/CRUDS/agregarUsuario', [Usuarios::class, 'store'])
     ->name('usuario.store');
 Route::get('/CRUDS/agregarUsuario/{id}', [Usuarios::class, 'show'])
