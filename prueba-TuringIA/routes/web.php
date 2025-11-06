@@ -29,7 +29,7 @@ Route::get('/CRUDS/agregarCategoria/{id}', [App\Http\Controllers\Api\ApiCategori
 ->name('categoria.edit');
 Route::patch('/CRUDS/agregarCategoria/{id}', [App\Http\Controllers\Api\ApiCategorias::class, 'update'])
 ->name('categoria.update');
-Route::patch('/CRUDS/agregarCategoria/{id}', [App\Http\Controllers\Api\ApiCategorias::class, 'destroy'])
+Route::delete('/CRUDS/agregarCategoria/{id}', [App\Http\Controllers\Api\ApiCategorias::class, 'destroy'])
 ->name('categoria.destroy');
 
 #CRUD Platillos

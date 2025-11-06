@@ -3,46 +3,73 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use App\Models\Venta;
+use App\Models\Platillo;
+use Carbon\Carbon;
 
 class ApiVentas
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'platillos_id' => 'required|exists:platillos,id',
+            'cantidad' => 'required|integer|min:1',
+        ]);
+
+        Venta::create([
+            'platillos_id' => $request->platillos_id,
+            'cantidad' => $request->cantidad,
+            'fecha_venta' => $request->fecha_venta ?? Carbon::now(),
+        ]);
+
+        return redirect()->back()->with('success', 'Venta registrada correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $venta = Venta::find($id);
+
+        if (!$venta) {
+            return redirect()->back()->with('error', 'Venta no encontrada.');
+        }
+
+        $platillos = Platillo::all();
+
+        return view('CRUDS.agregarVenta', compact('venta', 'platillos'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'platillos_id' => 'required|exists:platillos,id',
+            'cantidad' => 'required|integer|min:1',
+        ]);
+
+        $venta = Venta::find($id);
+
+        if (!$venta) {
+            return redirect()->back()->with('error', 'Venta no encontrada.');
+        }
+
+        $venta->update([
+            'platillos_id' => $request->platillos_id,
+            'cantidad' => $request->cantidad,
+            'fecha_venta' => $request->fecha_venta ?? $venta->fecha_venta,
+        ]);
+
+        return redirect()->back()->with('success', 'Venta actualizada correctamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $venta = Venta::find($id);
+
+        if (!$venta) {
+            return redirect()->back()->with('error', 'Venta no encontrada.');
+        }
+
+        $venta->delete();
+
+        return redirect()->back()->with('success', 'Venta eliminada correctamente.');
     }
 }

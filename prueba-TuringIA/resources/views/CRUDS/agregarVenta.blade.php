@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="precio">Cantidad</label>
+                            <label for="cantidad">Cantidad</label>
                             <input type="number" step="0.01" class="form-control" id="cantidad" name="cantidad" required>
                         </div>
 
