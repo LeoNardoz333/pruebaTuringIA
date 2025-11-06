@@ -86,7 +86,11 @@ class Usuarios extends Controller
             RateLimiter::clear($key);
             $request->session()->regenerate();
             $usuario = User::where('email', $validated['email'])->first();
-            if($usuario['permisos'] == 'admin')
+            if($usuario['permisos'] == 'user' && $request->input('role') == 'admin')
+                return redirect()->back()->withErrors(['email' => 'Este usuario no cuenta con permisos de administrador.']);
+            else if($usuario['permisos'] == 'admin' && $request->input('role') == 'user')
+                return redirect()->back()->withErrors(['email' => 'Las credenciales son incorrectas.']);
+            else if($usuario['permisos'] == 'admin')
                  return redirect()->intended(route('v_menu-admins'));
             else
             return redirect()->intended(route('v_menu-usuarios'));

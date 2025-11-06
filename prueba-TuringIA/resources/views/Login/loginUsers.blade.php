@@ -49,6 +49,7 @@
                     </div>
                     @error('password') <p class="text text-danger text-center">{{ $message }}</p>
                     @enderror
+                    <input type="hidden" name="role" value="user">
                     <div class="mt-4">
                         <button type="submit" class="form-control btn btn-primary">Iniciar sesión</button>
                     </div>
