@@ -112,7 +112,7 @@ class Usuarios
             else if($usuario['permisos'] == 'admin')
                  return redirect()->intended(route('v_menu-admins'));
             else
-            return redirect()->intended(route('v_menu-usuarios'));
+            return redirect()->route('home');
         }
 
         RateLimiter::hit($key, 60);

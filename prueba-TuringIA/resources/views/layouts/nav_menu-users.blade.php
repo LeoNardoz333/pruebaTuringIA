@@ -25,7 +25,7 @@
         <span class="me-3">
           👤 {{ Auth::user()->nombre }}
         </span>
-        <form action="" method="POST">
+        <form action="{{ route('login.logout') }}" method="POST">
           @csrf
           <button type="submit" class="btn btn-outline-primary me-2">
             Cerrar sesión

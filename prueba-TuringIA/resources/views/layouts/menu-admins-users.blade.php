@@ -7,7 +7,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Usuarios</a>
+                    <a class="nav-link" href="{{ route('home') }}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">Usuarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('v_loginAdmins') }}">Administradores</a>
