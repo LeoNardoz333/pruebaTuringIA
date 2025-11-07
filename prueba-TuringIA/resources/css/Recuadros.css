@@ -66,13 +66,13 @@
 }
 
 .navbar-nav .nav-link:hover {
-    background-color: rgb(211, 255, 224);
-    color: rgb(12, 92, 48) !important;
+    background-color: rgb(140, 217, 253);
+    color: rgb(12, 69, 92) !important;
 }
 
 @media (max-width: 991px) {
     .navbar-nav {
-        background-color: rgb(61, 223, 166);
+        background-color: rgb(61, 172, 223);
         border-radius: 4px;
         margin-top: 1rem;
     }

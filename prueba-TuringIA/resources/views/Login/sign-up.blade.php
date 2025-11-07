@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        @vite(['resources/css/Botones.css'])
         @vite(['resources/css/Fuentes.css'])
         @vite(['resources/css/Recuadros.css'])
         @vite(['resources/css/Iconos.css'])

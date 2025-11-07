@@ -7,7 +7,9 @@
     <title>El Comal Antiguo</title>
 </head>
 <body>
-    @include('layouts.nav_menu-admins')
+    <header>
+        @include('layouts.nav_menu-admins')
+    </header>
     <div class="container mt-4">
         <div class="d-flex justify-content-center align-items-center vh-100">
             <h1>Bienvenido de Vuelta.</h1>

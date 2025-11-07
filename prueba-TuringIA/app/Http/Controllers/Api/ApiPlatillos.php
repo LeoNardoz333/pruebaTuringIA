@@ -10,6 +10,20 @@ use Illuminate\Support\Facades\Storage;
 
 class ApiPlatillos
 {
+    public function index()
+    {
+        $platillos = Platillo::all();
+
+        $platillos->transform(function ($platillo) {
+            $platillo->foto_url = $platillo->foto 
+                ? asset('storage/' . $platillo->foto)
+                : asset('blog/default.png'); // imagen por defecto
+            return $platillo;
+        });
+
+        return response()->json($platillos);
+    }
+
     public function store(Request $request)
     {
         $request->validate([

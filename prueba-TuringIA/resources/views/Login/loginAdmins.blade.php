@@ -7,7 +7,6 @@
     <title>Iniciar Sesión</title>
     @vite(['resources/css/Recuadros.css'])
     @vite(['resources/css/Iconos.css'])
-    @vite(['resources/css/Botones.css'])
     @vite(['resources/css/Fuentes.css'])
     @vite(['resources/js/f_login.js'])
 </head>
