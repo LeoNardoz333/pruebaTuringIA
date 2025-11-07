@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Venta;
 use App\Models\Platillo;
@@ -9,6 +10,11 @@ use Carbon\Carbon;
 
 class ApiVentas
 {
+    public function index()
+    {
+        $ventas = DB::table('v_ventas')->get();
+        return response()->json($ventas);
+    }
     public function store(Request $request)
     {
         $request->validate([

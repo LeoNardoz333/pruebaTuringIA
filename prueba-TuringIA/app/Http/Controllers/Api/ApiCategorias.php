@@ -8,6 +8,11 @@ use App\Models\Categoria;
 
 class ApiCategorias
 {
+    public function index()
+    {
+        $categoria = Categoria::all();
+        return response()->json($categoria );
+    }
     public function store(Request $request)
     {
         $request->validate([

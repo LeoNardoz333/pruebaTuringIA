@@ -33,7 +33,6 @@ Route::delete('/CRUDS/agregarCategoria/{id}', [App\Http\Controllers\Api\ApiCateg
 #CRUD Platillos
 Route::get('/CRUDS/agregarPlatillo', function () { return view('/CRUDS/agregarPlatillo'); })
 ->name('platillo.index');
-Route::get('/platillos', [App\Http\Controllers\Api\ApiPlatillos::class, 'index']); // API endpoint para obtener platillos
 Route::post('/CRUDS/agregarPlatillo', [App\Http\Controllers\Api\ApiPlatillos::class, 'store'])
     ->name('platillo.store');
 Route::get('/CRUDS/agregarPlatillo/{id}', [App\Http\Controllers\Api\ApiPlatillos::class, 'show'])
